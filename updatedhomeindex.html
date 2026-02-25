@@ -1,0 +1,811 @@
+<!doctype html>
+<html lang="en" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ugo Best Foods - Premium Nigerian Food Delivery</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&amp;family=Poppins:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #D4531C;
+      --secondary: #1A5D1A;
+      --accent: #F4B400;
+      --dark: #2D2D2D;
+      --cream: #FFF8F0;
+    }
+    * { scroll-behavior: smooth; }
+    html, body { height: 100%; }
+    body { font-family: 'Poppins', sans-serif; overflow-y: auto; }
+    .font-display { font-family: 'Playfair Display', serif; }
+    .gradient-overlay {
+      background: linear-gradient(135deg, rgba(26, 93, 26, 0.95) 0%, rgba(212, 83, 28, 0.9) 100%);
+    }
+    .nav-link {
+      position: relative;
+      font-weight: 500;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--primary);
+      transition: width 0.3s ease;
+    }
+    .nav-link:hover::after {
+      width: 100%;
+    }
+    .social-btn {
+      transition: all 0.3s ease;
+    }
+    .social-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    .float-animation {
+      animation: float 3s ease-in-out infinite;
+    }
+    @keyframes slideInDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-slideInDown {
+      animation: slideInDown 0.6s ease forwards;
+    }
+    .page-section {
+      min-height: calc(100vh - 80px);
+    }
+    .food-card {
+      transition: all 0.3s ease;
+    }
+    .food-card:hover {
+      transform: translateY(-5px);
+    }
+  </style>
+  <style>body { box-sizing: border-box; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full bg-black">
+  <div id="app" class="w-full h-full flex flex-col"><!-- Navigation -->
+   <nav class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md shadow-md">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+     <div class="flex justify-between items-center h-20"><!-- Logo Section -->
+      <div class="flex items-center gap-3 cursor-pointer" onclick="navigateTo('home')">
+       <div id="logo-container" class="w-14 h-14 rounded-full bg-gradient-to-br from-[#1A5D1A] to-[#D4531C] flex items-center justify-center text-white font-bold text-xl shadow-lg overflow-hidden">
+        <img id="logo-img" src="" alt="UB" style="width: 100%; height: 100%; object-fit: cover; display: none;"> <span id="logo-text" class="font-display">UB</span>
+       </div>
+       <div>
+        <h1 class="text-xl font-bold text-[#2D2D2D] font-display">Ugo Best Foods</h1>
+        <p class="text-xs text-[#D4531C] font-medium">Premium Nigerian Cuisine</p>
+       </div>
+      </div>
+      <div class="hidden md:flex items-center gap-8">
+       <button onclick="navigateTo('home')" class="nav-link text-[#2D2D2D] hover:text-[#D4531C] transition-colors">Home</button> <button onclick="navigateTo('about')" class="nav-link text-[#2D2D2D] hover:text-[#D4531C] transition-colors">About Us</button> <button onclick="navigateTo('services')" class="nav-link text-[#2D2D2D] hover:text-[#D4531C] transition-colors">Book Services</button> <button onclick="navigateTo('contact')" class="nav-link text-[#2D2D2D] hover:text-[#D4531C] transition-colors">Contact</button>
+      </div><a href="https://wa.me/" target="_blank" rel="noopener noreferrer" class="hidden md:flex items-center gap-2 bg-[#25D366] text-white px-5 py-2.5 rounded-full font-semibold hover:bg-[#128C7E] transition-all shadow-lg">
+       <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+       </svg> Order Now </a> <button onclick="toggleMobileMenu()" class="md:hidden p-2 rounded-lg hover:bg-gray-100">
+       <svg class="w-6 h-6 text-[#2D2D2D]" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+       </svg></button>
+     </div>
+    </div><!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-t shadow-lg">
+     <div class="px-4 py-6 space-y-4">
+      <button onclick="navigateTo('home')" class="block w-full text-left py-2 text-[#2D2D2D] font-medium hover:text-[#D4531C]">Home</button> <button onclick="navigateTo('about')" class="block w-full text-left py-2 text-[#2D2D2D] font-medium hover:text-[#D4531C]">About Us</button> <button onclick="navigateTo('services')" class="block w-full text-left py-2 text-[#2D2D2D] font-medium hover:text-[#D4531C]">Book Services</button> <button onclick="navigateTo('contact')" class="block w-full text-left py-2 text-[#2D2D2D] font-medium hover:text-[#D4531C]">Contact</button> <a href="https://wa.me/" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-2 bg-[#25D366] text-white px-5 py-3 rounded-full font-semibold mt-4">
+       <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+       </svg> Order Now </a>
+     </div>
+    </div>
+   </nav><!-- Page Content -->
+   <div id="page-content" class="flex-1 pt-20 overflow-y-auto"><!-- HOME PAGE -->
+    <section id="home-page"><!-- Hero Section -->
+     <div class="relative min-h-[600px] gradient-overlay flex items-center">
+      <div class="absolute inset-0 pattern-bg opacity-30"></div>
+      <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+       <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div class="text-white animate-fadeInUp"><span class="inline-block bg-[#F4B400] text-[#2D2D2D] px-4 py-1 rounded-full text-sm font-semibold mb-6">🇳🇬 Authentic Nigerian Flavors</span>
+         <h1 id="hero-title" class="text-4xl md:text-6xl font-bold font-display leading-tight mb-6">Premium Nigerian Food Delivered Fresh</h1>
+         <p id="hero-subtitle" class="text-lg md:text-xl opacity-90 mb-8 leading-relaxed">Experience the rich, authentic taste of Nigeria with locally-sourced ingredients and unbeatable quality. From savory Jollof Rice to crispy Puff Puff, we bring the best of Nigerian cuisine to your doorstep.</p>
+         <div class="flex flex-wrap gap-4"><a href="https://wa.me/" target="_blank" rel="noopener noreferrer" class="social-btn inline-flex items-center gap-2 bg-[#25D366] text-white px-8 py-4 rounded-full font-semibold text-lg shadow-xl">
+           <svg class="w-6 h-6" fill="currentColor" viewbox="0 0 24 24">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+           </svg> Order on WhatsApp </a> <button onclick="navigateTo('menu')" class="social-btn inline-flex items-center gap-2 bg-white text-[#D4531C] px-8 py-4 rounded-full font-semibold text-lg shadow-xl hover:bg-[#FFF8F0]"> View Our Menu 
+           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+           </svg></button>
+         </div>
+        </div>
+        <div class="hidden md:flex justify-center">
+         <div class="relative">
+          <div class="w-80 h-80 bg-[#F4B400] rounded-full absolute -top-4 -left-4 opacity-30"></div>
+          <div class="w-80 h-80 bg-white rounded-full flex items-center justify-center shadow-2xl float-animation relative z-10">
+           <div class="text-center p-8">
+            <div class="text-7xl mb-4">
+             🍛
+            </div>
+            <p class="text-[#2D2D2D] font-display font-bold text-xl">Fresh &amp; Delicious</p>
+            <p class="text-[#D4531C] font-medium">Made with Love</p>
+           </div>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div><!-- Social Buttons Bar -->
+     <div class="bg-[#2D2D2D] py-6">
+      <div class="max-w-7xl mx-auto px-4">
+       <div class="flex flex-wrap justify-center gap-4"><a href="https://www.facebook.com/profile.php?id=" target="_blank" rel="noopener noreferrer" class="social-btn flex items-center gap-2 bg-[#1877F2] text-white px-6 py-3 rounded-full font-medium">
+         <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24">
+          <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+         </svg> Facebook </a> <a href="https://www.instagram.com/ugobestfoods/" target="_blank" rel="noopener noreferrer" class="social-btn flex items-center gap-2 bg-gradient-to-r from-[#833AB4] via-[#FD1D1D] to-[#F77737] text-white px-6 py-3 rounded-full font-medium">
+         <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24">
+          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+         </svg> Instagram </a> <a href="https://www.tiktok.com/@ugobestfoods" target="_blank" rel="noopener noreferrer" class="social-btn flex items-center gap-2 bg-black text-white px-6 py-3 rounded-full font-medium">
+         <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24">
+          <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-1-.05A6.33 6.33 0 005 20.1a6.34 6.34 0 0010.86-4.43v-7a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-1-.1z" />
+         </svg> TikTok </a> <a href="mailto:ugobestfoods@gmail.com" class="social-btn flex items-center gap-2 bg-[#D4531C] text-white px-6 py-3 rounded-full font-medium">
+         <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24">
+          <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+         </svg> Email Us </a> <a href="tel:+234" class="social-btn flex items-center gap-2 bg-[#1A5D1A] text-white px-6 py-3 rounded-full font-medium">
+         <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24">
+          <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
+         </svg> Call Us </a>
+       </div>
+      </div>
+     </div><!-- Features Section -->
+     <div class="py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-4">
+       <div class="text-center mb-16"><span class="inline-block bg-[#D4531C]/10 text-[#D4531C] px-4 py-1 rounded-full text-sm font-semibold mb-4">Why Choose Us</span>
+        <h2 class="text-3xl md:text-4xl font-bold font-display text-[#2D2D2D]">The Ugo Best Foods Difference</h2>
+       </div>
+       <div class="grid md:grid-cols-4 gap-8">
+        <div class="text-center p-6 rounded-2xl bg-[#FFF8F0] hover:shadow-xl transition-shadow">
+         <div class="w-16 h-16 bg-[#1A5D1A] rounded-full flex items-center justify-center mx-auto mb-4 text-3xl">
+          🌿
+         </div>
+         <h3 class="font-bold text-lg text-[#2D2D2D] mb-2">Locally Sourced</h3>
+         <p class="text-gray-600 text-sm">Fresh ingredients from trusted local farmers</p>
+        </div>
+        <div class="text-center p-6 rounded-2xl bg-[#FFF8F0] hover:shadow-xl transition-shadow">
+         <div class="w-16 h-16 bg-[#D4531C] rounded-full flex items-center justify-center mx-auto mb-4 text-3xl">
+          👨‍🍳
+         </div>
+         <h3 class="font-bold text-lg text-[#2D2D2D] mb-2">Expert Chefs</h3>
+         <p class="text-gray-600 text-sm">Authentic recipes from skilled Nigerian cooks</p>
+        </div>
+        <div class="text-center p-6 rounded-2xl bg-[#FFF8F0] hover:shadow-xl transition-shadow">
+         <div class="w-16 h-16 bg-[#F4B400] rounded-full flex items-center justify-center mx-auto mb-4 text-3xl">
+          🚚
+         </div>
+         <h3 class="font-bold text-lg text-[#2D2D2D] mb-2">Fast Delivery</h3>
+         <p class="text-gray-600 text-sm">Quick and reliable delivery across the country</p>
+        </div>
+        <div class="text-center p-6 rounded-2xl bg-[#FFF8F0] hover:shadow-xl transition-shadow">
+         <div class="w-16 h-16 bg-[#25D366] rounded-full flex items-center justify-center mx-auto mb-4 text-3xl">
+          💰
+         </div>
+         <h3 class="font-bold text-lg text-[#2D2D2D] mb-2">Affordable Prices</h3>
+         <p class="text-gray-600 text-sm">Premium quality at prices you'll love</p>
+        </div>
+       </div>
+      </div>
+     </div><!-- Popular Dishes Preview -->
+     <div class="py-20 pattern-bg">
+      <div class="max-w-7xl mx-auto px-4">
+       <div class="text-center mb-16"><span class="inline-block bg-[#1A5D1A]/10 text-[#1A5D1A] px-4 py-1 rounded-full text-sm font-semibold mb-4">Our Specialties</span>
+        <h2 class="text-3xl md:text-4xl font-bold font-display text-[#2D2D2D] mb-4">Popular Nigerian Dishes</h2>
+        <p class="text-gray-600 max-w-2xl mx-auto">Discover our most loved dishes, prepared with authentic recipes and the finest ingredients</p>
+       </div>
+       <div class="grid md:grid-cols-3 gap-8"><!-- Jollof Rice -->
+        <div class="food-card bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all group">
+         <div class="h-48 bg-gradient-to-br from-[#D4531C] to-[#F4B400] overflow-hidden flex items-center justify-center"><span class="text-8xl food-image transition-transform duration-500">🍚</span>
+         </div>
+         <div class="p-6">
+          <div class="flex items-center justify-between mb-2">
+           <h3 class="font-bold text-xl text-[#2D2D2D] font-display">Jollof Rice</h3><span class="text-[#D4531C] font-bold">★ 4.9</span>
+          </div>
+          <p class="text-gray-600 text-sm mb-4">Iconic Nigerian party rice cooked in rich tomato sauce with aromatic spices</p>
+          <div class="flex items-center justify-between"><span class="text-[#1A5D1A] font-semibold">Best Seller</span> <a href="https://wa.me/" target="_blank" rel="noopener noreferrer" class="bg-[#D4531C] text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-[#b8461a] transition-colors">Order Now</a>
+          </div>
+         </div>
+        </div><!-- Fried Rice -->
+        <div class="food-card bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all group">
+         <div class="h-48 bg-gradient-to-br from-[#1A5D1A] to-[#25D366] overflow-hidden flex items-center justify-center"><span class="text-8xl food-image transition-transform duration-500">🥡</span>
+         </div>
+         <div class="p-6">
+          <div class="flex items-center justify-between mb-2">
+           <h3 class="font-bold text-xl text-[#2D2D2D] font-display">Nigerian Fried Rice</h3><span class="text-[#D4531C] font-bold">★ 4.8</span>
+          </div>
+          <p class="text-gray-600 text-sm mb-4">Colorful stir-fried rice with vegetables, shrimp, and savory seasonings</p>
+          <div class="flex items-center justify-between"><span class="text-[#1A5D1A] font-semibold">Popular</span> <a href="https://wa.me/" target="_blank" rel="noopener noreferrer" class="bg-[#D4531C] text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-[#b8461a] transition-colors">Order Now</a>
+          </div>
+         </div>
+        </div><!-- Puff Puff -->
+        <div class="food-card bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all group">
+         <div class="h-48 bg-gradient-to-br from-[#F4B400] to-[#D4531C] overflow-hidden flex items-center justify-center"><span class="text-8xl food-image transition-transform duration-500">🧁</span>
+         </div>
+         <div class="p-6">
+          <div class="flex items-center justify-between mb-2">
+           <h3 class="font-bold text-xl text-[#2D2D2D] font-display">Puff Puff</h3><span class="text-[#D4531C] font-bold">★ 4.9</span>
+          </div>
+          <p class="text-gray-600 text-sm mb-4">Sweet, fluffy Nigerian doughnuts perfect for snacking or dessert</p>
+          <div class="flex items-center justify-between"><span class="text-[#1A5D1A] font-semibold">Snack Favorite</span> <a href="https://wa.me/" target="_blank" rel="noopener noreferrer" class="bg-[#D4531C] text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-[#b8461a] transition-colors">Order Now</a>
+          </div>
+         </div>
+        </div>
+       </div>
+       <div class="text-center mt-12"><button onclick="navigateTo('menu')" class="inline-flex items-center gap-2 bg-[#1A5D1A] text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-[#145214] transition-colors shadow-lg"> View Full Menu 
+         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+         </svg></button>
+       </div>
+      </div>
+     </div>
+    </section><!-- ABOUT US PAGE -->
+    <section id="about-page" class="hidden page-section">
+     <div class="min-h-screen"><!-- About Hero -->
+      <div class="gradient-overlay py-24">
+       <div class="max-w-7xl mx-auto px-4 text-center text-white"><span class="inline-block bg-[#F4B400] text-[#2D2D2D] px-4 py-1 rounded-full text-sm font-semibold mb-6">Our Story</span>
+        <h1 class="text-4xl md:text-5xl font-bold font-display mb-6">About Ugo Best Foods</h1>
+        <p class="text-xl opacity-90 max-w-3xl mx-auto">Bringing the authentic taste of Nigeria to homes across the nation with passion, quality, and love.</p>
+       </div>
+      </div><!-- About Content -->
+      <div class="py-20 bg-white">
+       <div class="max-w-7xl mx-auto px-4">
+        <div class="grid md:grid-cols-2 gap-16 items-center">
+         <div>
+          <div class="w-full h-80 bg-gradient-to-br from-[#1A5D1A] to-[#D4531C] rounded-3xl flex items-center justify-center shadow-2xl">
+           <div class="text-center text-white p-8">
+            <div class="text-8xl mb-4">
+             👨‍🍳
+            </div>
+            <p class="font-display text-2xl font-bold">Cooking with Passion</p>
+            <p class="opacity-80">Since Day One</p>
+           </div>
+          </div>
+         </div>
+         <div>
+          <h2 class="text-3xl font-bold font-display text-[#2D2D2D] mb-6">Our Mission</h2>
+          <p id="company-mission" class="text-gray-600 text-lg leading-relaxed mb-6">Ugo Best Foods delivers premium, locally-sourced Nigerian food products with unbeatable quality and taste. We are trusted for affordable Nigerian food and the best Nigerian food delivery across the country.</p>
+          <p class="text-gray-600 text-lg leading-relaxed mb-6">Our passion lies in preserving the authentic flavors of Nigerian cuisine while making it accessible to everyone. From our signature Jollof Rice to our beloved Puff Puff, every dish is prepared with care, using only the freshest locally-sourced ingredients.</p>
+          <div class="grid grid-cols-2 gap-6 mt-8">
+           <div class="text-center p-4 bg-[#FFF8F0] rounded-xl">
+            <div class="text-3xl font-bold text-[#D4531C]">
+             1000+
+            </div>
+            <div class="text-gray-600">
+             Happy Customers
+            </div>
+           </div>
+           <div class="text-center p-4 bg-[#FFF8F0] rounded-xl">
+            <div class="text-3xl font-bold text-[#1A5D1A]">
+             50+
+            </div>
+            <div class="text-gray-600">
+             Menu Items
+            </div>
+           </div>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div><!-- Values -->
+      <div class="py-20 pattern-bg">
+       <div class="max-w-7xl mx-auto px-4">
+        <div class="text-center mb-16">
+         <h2 class="text-3xl md:text-4xl font-bold font-display text-[#2D2D2D]">Our Core Values</h2>
+        </div>
+        <div class="grid md:grid-cols-3 gap-8">
+         <div class="bg-white p-8 rounded-3xl shadow-lg text-center">
+          <div class="w-20 h-20 bg-[#D4531C] rounded-full flex items-center justify-center mx-auto mb-6 text-4xl">
+           🎯
+          </div>
+          <h3 class="font-bold text-xl text-[#2D2D2D] mb-4 font-display">Quality First</h3>
+          <p class="text-gray-600">We never compromise on the quality of our ingredients or preparation methods.</p>
+         </div>
+         <div class="bg-white p-8 rounded-3xl shadow-lg text-center">
+          <div class="w-20 h-20 bg-[#1A5D1A] rounded-full flex items-center justify-center mx-auto mb-6 text-4xl">
+           ❤️
+          </div>
+          <h3 class="font-bold text-xl text-[#2D2D2D] mb-4 font-display">Made with Love</h3>
+          <p class="text-gray-600">Every dish is prepared with the same care we would give to our own family meals.</p>
+         </div>
+         <div class="bg-white p-8 rounded-3xl shadow-lg text-center">
+          <div class="w-20 h-20 bg-[#F4B400] rounded-full flex items-center justify-center mx-auto mb-6 text-4xl">
+           🤝
+          </div>
+          <h3 class="font-bold text-xl text-[#2D2D2D] mb-4 font-display">Customer Focus</h3>
+          <p class="text-gray-600">Your satisfaction is our priority. We go above and beyond to serve you better.</p>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </section><!-- MENU PAGE -->
+    <section id="menu-page" class="hidden">
+     <div class="min-h-screen"><!-- Menu Hero -->
+      <div class="gradient-overlay py-24">
+       <div class="max-w-7xl mx-auto px-4 text-center text-white"><span class="inline-block bg-[#F4B400] text-[#2D2D2D] px-4 py-1 rounded-full text-sm font-semibold mb-6">Delicious Options</span>
+        <h1 class="text-4xl md:text-5xl font-bold font-display mb-6">Our Menu</h1>
+        <p class="text-xl opacity-90 max-w-3xl mx-auto">Explore our wide selection of authentic Nigerian dishes and snacks</p>
+       </div>
+      </div><!-- Rice Dishes -->
+      <div class="py-20 bg-white">
+       <div class="max-w-7xl mx-auto px-4">
+        <div class="text-center mb-12"><span class="inline-block bg-[#D4531C]/10 text-[#D4531C] px-4 py-1 rounded-full text-sm font-semibold mb-4">🍚 Rice Dishes</span>
+         <h2 class="text-3xl font-bold font-display text-[#2D2D2D]">Nigerian Rice Specialties</h2>
+        </div>
+        <div class="grid md:grid-cols-4 gap-6">
+         <div class="food-card bg-[#FFF8F0] rounded-2xl overflow-hidden hover:shadow-xl transition-all">
+          <div class="h-40 bg-gradient-to-br from-[#D4531C] to-[#F4B400] flex items-center justify-center"><span class="text-6xl">🍛</span>
+          </div>
+          <div class="p-5">
+           <h3 class="font-bold text-lg text-[#2D2D2D]">Jollof Rice</h3>
+           <p class="text-gray-600 text-sm mt-1">Classic party-style with rich tomato base</p><a href="https://wa.me/" target="_blank" rel="noopener noreferrer" class="mt-3 inline-block bg-[#D4531C] text-white px-4 py-2 rounded-full text-sm font-medium">Order</a>
+          </div>
+         </div>
+         <div class="food-card bg-[#FFF8F0] rounded-2xl overflow-hidden hover:shadow-xl transition-all">
+          <div class="h-40 bg-gradient-to-br from-[#1A5D1A] to-[#25D366] flex items-center justify-center"><span class="text-6xl">🥡</span>
+          </div>
+          <div class="p-5">
+           <h3 class="font-bold text-lg text-[#2D2D2D]">Fried Rice</h3>
+           <p class="text-gray-600 text-sm mt-1">Colorful with vegetables and seasonings</p><a href="https://wa.me/" target="_blank" rel="noopener noreferrer" class="mt-3 inline-block bg-[#D4531C] text-white px-4 py-2 rounded-full text-sm font-medium">Order</a>
+          </div>
+         </div>
+         <div class="food-card bg-[#FFF8F0] rounded-2xl overflow-hidden hover:shadow-xl transition-all">
+          <div class="h-40 bg-gradient-to-br from-[#F4B400] to-[#D4531C] flex items-center justify-center"><span class="text-6xl">🍚</span>
+          </div>
+          <div class="p-5">
+           <h3 class="font-bold text-lg text-[#2D2D2D]">White Rice &amp; Stew</h3>
+           <p class="text-gray-600 text-sm mt-1">Fluffy rice with rich Nigerian stew</p><a href="https://wa.me/" target="_blank" rel="noopener noreferrer" class="mt-3 inline-block bg-[#D4531C] text-white px-4 py-2 rounded-full text-sm font-medium">Order</a>
+          </div>
+         </div>
+         <div class="food-card bg-[#FFF8F0] rounded-2xl overflow-hidden hover:shadow-xl transition-all">
+          <div class="h-40 bg-gradient-to-br from-[#8B4513] to-[#D4531C] flex items-center justify-center"><span class="text-6xl">🥘</span>
+          </div>
+          <div class="p-5">
+           <h3 class="font-bold text-lg text-[#2D2D2D]">Coconut Rice</h3>
+           <p class="text-gray-600 text-sm mt-1">Fragrant rice cooked in coconut milk</p><a href="https://wa.me/" target="_blank" rel="noopener noreferrer" class="mt-3 inline-block bg-[#D4531C] text-white px-4 py-2 rounded-full text-sm font-medium">Order</a>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div><!-- Soups & Swallows -->
+      <div class="py-20 pattern-bg">
+       <div class="max-w-7xl mx-auto px-4">
+        <div class="text-center mb-12"><span class="inline-block bg-[#1A5D1A]/10 text-[#1A5D1A] px-4 py-1 rounded-full text-sm font-semibold mb-4">🍲 Traditional Dishes</span>
+         <h2 class="text-3xl font-bold font-display text-[#2D2D2D]">Soups &amp; Swallows</h2>
+        </div>
+        <div class="grid md:grid-cols-4 gap-6">
+         <div class="food-card bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all">
+          <div class="h-40 bg-gradient-to-br from-[#2D2D2D] to-[#555] flex items-center justify-center"><span class="text-6xl">🥣</span>
+          </div>
+          <div class="p-5">
+           <h3 class="font-bold text-lg text-[#2D2D2D]">Egusi Soup</h3>
+           <p class="text-gray-600 text-sm mt-1">Rich melon seed soup with vegetables</p><a href="https://wa.me/" target="_blank" rel="noopener noreferrer" class="mt-3 inline-block bg-[#1A5D1A] text-white px-4 py-2 rounded-full text-sm font-medium">Order</a>
+          </div>
+         </div>
+         <div class="food-card bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all">
+          <div class="h-40 bg-gradient-to-br from-[#1A5D1A] to-[#3D8B3D] flex items-center justify-center"><span class="text-6xl">🥬</span>
+          </div>
+          <div class="p-5">
+           <h3 class="font-bold text-lg text-[#2D2D2D]">Efo Riro</h3>
+           <p class="text-gray-600 text-sm mt-1">Spinach soup with assorted meat</p><a href="https://wa.me/" target="_blank" rel="noopener noreferrer" class="mt-3 inline-block bg-[#1A5D1A] text-white px-4 py-2 rounded-full text-sm font-medium">Order</a>
+          </div>
+         </div>
+         <div class="food-card bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all">
+          <div class="h-40 bg-gradient-to-br from-[#D4531C] to-[#8B4513] flex items-center justify-center"><span class="text-6xl">🍜</span>
+          </div>
+          <div class="p-5">
+           <h3 class="font-bold text-lg text-[#2D2D2D]">Ogbono Soup</h3>
+           <p class="text-gray-600 text-sm mt-1">Draw soup with wild mango seeds</p><a href="https://wa.me/" target="_blank" rel="noopener noreferrer" class="mt-3 inline-block bg-[#1A5D1A] text-white px-4 py-2 rounded-full text-sm font-medium">Order</a>
+          </div>
+         </div>
+         <div class="food-card bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all">
+          <div class="h-40 bg-gradient-to-br from-[#F4B400] to-[#D4531C] flex items-center justify-center"><span class="text-6xl">🫓</span>
+          </div>
+          <div class="p-5">
+           <h3 class="font-bold text-lg text-[#2D2D2D]">Pounded Yam</h3>
+           <p class="text-gray-600 text-sm mt-1">Smooth, stretchy swallow</p><a href="https://wa.me/" target="_blank" rel="noopener noreferrer" class="mt-3 inline-block bg-[#1A5D1A] text-white px-4 py-2 rounded-full text-sm font-medium">Order</a>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div><!-- Snacks -->
+      <div class="py-20 bg-white">
+       <div class="max-w-7xl mx-auto px-4">
+        <div class="text-center mb-12"><span class="inline-block bg-[#F4B400]/20 text-[#D4531C] px-4 py-1 rounded-full text-sm font-semibold mb-4">🍩 Sweet Treats</span>
+         <h2 class="text-3xl font-bold font-display text-[#2D2D2D]">Nigerian Snacks</h2>
+        </div>
+        <div class="grid md:grid-cols-4 gap-6">
+         <div class="food-card bg-[#FFF8F0] rounded-2xl overflow-hidden hover:shadow-xl transition-all">
+          <div class="h-40 bg-gradient-to-br from-[#F4B400] to-[#D4531C] flex items-center justify-center"><span class="text-6xl">🧁</span>
+          </div>
+          <div class="p-5">
+           <h3 class="font-bold text-lg text-[#2D2D2D]">Puff Puff</h3>
+           <p class="text-gray-600 text-sm mt-1">Sweet, fluffy Nigerian doughnuts</p><a href="https://wa.me/" target="_blank" rel="noopener noreferrer" class="mt-3 inline-block bg-[#F4B400] text-[#2D2D2D] px-4 py-2 rounded-full text-sm font-medium">Order</a>
+          </div>
+         </div>
+         <div class="food-card bg-[#FFF8F0] rounded-2xl overflow-hidden hover:shadow-xl transition-all">
+          <div class="h-40 bg-gradient-to-br from-[#D4531C] to-[#8B4513] flex items-center justify-center"><span class="text-6xl">🥟</span>
+          </div>
+          <div class="p-5">
+           <h3 class="font-bold text-lg text-[#2D2D2D]">Meat Pie</h3>
+           <p class="text-gray-600 text-sm mt-1">Flaky pastry with savory filling</p><a href="https://wa.me/" target="_blank" rel="noopener noreferrer" class="mt-3 inline-block bg-[#F4B400] text-[#2D2D2D] px-4 py-2 rounded-full text-sm font-medium">Order</a>
+          </div>
+         </div>
+         <div class="food-card bg-[#FFF8F0] rounded-2xl overflow-hidden hover:shadow-xl transition-all">
+          <div class="h-40 bg-gradient-to-br from-[#8B4513] to-[#D4531C] flex items-center justify-center"><span class="text-6xl">🌭</span>
+          </div>
+          <div class="p-5">
+           <h3 class="font-bold text-lg text-[#2D2D2D]">Sausage Roll</h3>
+           <p class="text-gray-600 text-sm mt-1">Golden pastry wrapped sausage</p><a href="https://wa.me/" target="_blank" rel="noopener noreferrer" class="mt-3 inline-block bg-[#F4B400] text-[#2D2D2D] px-4 py-2 rounded-full text-sm font-medium">Order</a>
+          </div>
+         </div>
+         <div class="food-card bg-[#FFF8F0] rounded-2xl overflow-hidden hover:shadow-xl transition-all">
+          <div class="h-40 bg-gradient-to-br from-[#F4B400] to-[#FFD700] flex items-center justify-center"><span class="text-6xl">🍌</span>
+          </div>
+          <div class="p-5">
+           <h3 class="font-bold text-lg text-[#2D2D2D]">Chin Chin</h3>
+           <p class="text-gray-600 text-sm mt-1">Crunchy fried dough snacks</p><a href="https://wa.me/" target="_blank" rel="noopener noreferrer" class="mt-3 inline-block bg-[#F4B400] text-[#2D2D2D] px-4 py-2 rounded-full text-sm font-medium">Order</a>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </section><!-- BOOK SERVICES PAGE -->
+    <section id="services-page" class="hidden">
+     <div class="min-h-screen"><!-- Services Hero -->
+      <div class="gradient-overlay py-24">
+       <div class="max-w-7xl mx-auto px-4 text-center text-white"><span class="inline-block bg-[#F4B400] text-[#2D2D2D] px-4 py-1 rounded-full text-sm font-semibold mb-6">Book Our Services</span>
+        <h1 class="text-4xl md:text-5xl font-bold font-display mb-6">Catering &amp; Events</h1>
+        <p class="text-xl opacity-90 max-w-3xl mx-auto">Let us make your special occasions memorable with authentic Nigerian cuisine</p>
+       </div>
+      </div><!-- Services Content -->
+      <div class="py-20 bg-white">
+       <div class="max-w-7xl mx-auto px-4">
+        <div class="grid md:grid-cols-3 gap-8 mb-16">
+         <div class="bg-[#FFF8F0] p-8 rounded-3xl text-center hover:shadow-xl transition-shadow">
+          <div class="w-20 h-20 bg-[#D4531C] rounded-full flex items-center justify-center mx-auto mb-6 text-4xl">
+           🎉
+          </div>
+          <h3 class="font-bold text-xl text-[#2D2D2D] mb-4 font-display">Party Catering</h3>
+          <p class="text-gray-600 mb-4">Perfect for birthdays, graduations, and celebrations of all sizes.</p><a href="https://wa.me/" target="_blank" rel="noopener noreferrer" class="inline-block bg-[#D4531C] text-white px-6 py-2 rounded-full font-medium">Book Now</a>
+         </div>
+         <div class="bg-[#FFF8F0] p-8 rounded-3xl text-center hover:shadow-xl transition-shadow">
+          <div class="w-20 h-20 bg-[#1A5D1A] rounded-full flex items-center justify-center mx-auto mb-6 text-4xl">
+           💒
+          </div>
+          <h3 class="font-bold text-xl text-[#2D2D2D] mb-4 font-display">Wedding Catering</h3>
+          <p class="text-gray-600 mb-4">Make your special day unforgettable with our premium Nigerian cuisine.</p><a href="https://wa.me/" target="_blank" rel="noopener noreferrer" class="inline-block bg-[#1A5D1A] text-white px-6 py-2 rounded-full font-medium">Book Now</a>
+         </div>
+         <div class="bg-[#FFF8F0] p-8 rounded-3xl text-center hover:shadow-xl transition-shadow">
+          <div class="w-20 h-20 bg-[#F4B400] rounded-full flex items-center justify-center mx-auto mb-6 text-4xl">
+           🏢
+          </div>
+          <h3 class="font-bold text-xl text-[#2D2D2D] mb-4 font-display">Corporate Events</h3>
+          <p class="text-gray-600 mb-4">Impress your clients and colleagues with authentic Nigerian flavors.</p><a href="https://wa.me/" target="_blank" rel="noopener noreferrer" class="inline-block bg-[#F4B400] text-[#2D2D2D] px-6 py-2 rounded-full font-medium">Book Now</a>
+         </div>
+        </div><!-- Booking Form -->
+        <div class="max-w-2xl mx-auto">
+         <div class="bg-white rounded-3xl shadow-2xl p-8 md:p-12">
+          <h2 class="text-2xl font-bold font-display text-[#2D2D2D] mb-6 text-center">Request a Quote</h2>
+          <form id="booking-form" class="space-y-6">
+           <div class="grid md:grid-cols-2 gap-6">
+            <div><label class="block text-sm font-medium text-gray-700 mb-2">Full Name</label> <input type="text" required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-[#D4531C] focus:border-transparent outline-none transition-all" placeholder="Your name">
+            </div>
+            <div><label class="block text-sm font-medium text-gray-700 mb-2">Phone Number</label> <input type="tel" required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-[#D4531C] focus:border-transparent outline-none transition-all" placeholder="Your phone">
+            </div>
+           </div>
+           <div><label class="block text-sm font-medium text-gray-700 mb-2">Email Address</label> <input type="email" required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-[#D4531C] focus:border-transparent outline-none transition-all" placeholder="your@email.com">
+           </div>
+           <div class="grid md:grid-cols-2 gap-6">
+            <div><label class="block text-sm font-medium text-gray-700 mb-2">Event Type</label> <select required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-[#D4531C] focus:border-transparent outline-none transition-all"> <option value="">Select event type</option> <option value="party">Party/Celebration</option> <option value="wedding">Wedding</option> <option value="corporate">Corporate Event</option> <option value="other">Other</option> </select>
+            </div>
+            <div><label class="block text-sm font-medium text-gray-700 mb-2">Number of Guests</label> <input type="number" required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-[#D4531C] focus:border-transparent outline-none transition-all" placeholder="Estimated guests">
+            </div>
+           </div>
+           <div><label class="block text-sm font-medium text-gray-700 mb-2">Event Date</label> <input type="date" required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-[#D4531C] focus:border-transparent outline-none transition-all">
+           </div>
+           <div><label class="block text-sm font-medium text-gray-700 mb-2">Additional Details</label> <textarea rows="4" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-[#D4531C] focus:border-transparent outline-none transition-all resize-none" placeholder="Tell us more about your event..."></textarea>
+           </div><button type="submit" class="w-full bg-[#D4531C] text-white py-4 rounded-xl font-semibold text-lg hover:bg-[#b8461a] transition-colors shadow-lg"> Submit Request </button>
+          </form>
+          <div id="form-success" class="hidden text-center py-8">
+           <div class="text-6xl mb-4">
+            ✅
+           </div>
+           <h3 class="text-xl font-bold text-[#1A5D1A] mb-2">Request Submitted!</h3>
+           <p class="text-gray-600">We'll get back to you within 24 hours.</p>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </section><!-- CONTACT PAGE -->
+    <section id="contact-page" class="hidden page-section">
+     <div class="min-h-screen"><!-- Contact Hero -->
+      <div class="gradient-overlay py-24">
+       <div class="max-w-7xl mx-auto px-4 text-center text-white"><span class="inline-block bg-[#F4B400] text-[#2D2D2D] px-4 py-1 rounded-full text-sm font-semibold mb-6">Get In Touch</span>
+        <h1 class="text-4xl md:text-5xl font-bold font-display mb-6">Contact Us</h1>
+        <p class="text-xl opacity-90 max-w-3xl mx-auto">We'd love to hear from you! Reach out through any of our channels.</p>
+       </div>
+      </div><!-- Contact Content -->
+      <div class="py-20 bg-white">
+       <div class="max-w-7xl mx-auto px-4">
+        <div class="grid md:grid-cols-2 gap-16"><!-- Contact Info -->
+         <div>
+          <h2 class="text-2xl font-bold font-display text-[#2D2D2D] mb-8">Connect With Us</h2>
+          <div class="space-y-6"><a href="mailto:ugobestfoods@gmail.com" class="flex items-center gap-4 p-4 bg-[#FFF8F0] rounded-2xl hover:shadow-lg transition-all group">
+            <div class="w-14 h-14 bg-[#D4531C] rounded-full flex items-center justify-center text-white text-2xl group-hover:scale-110 transition-transform">
+             📧
+            </div>
+            <div>
+             <h3 class="font-bold text-[#2D2D2D]">Email Us</h3>
+             <p class="text-[#D4531C]">ugobestfoods@gmail.com</p>
+            </div></a> <a href="https://wa.me/" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 p-4 bg-[#FFF8F0] rounded-2xl hover:shadow-lg transition-all group">
+            <div class="w-14 h-14 bg-[#25D366] rounded-full flex items-center justify-center text-white text-2xl group-hover:scale-110 transition-transform">
+             💬
+            </div>
+            <div>
+             <h3 class="font-bold text-[#2D2D2D]">WhatsApp</h3>
+             <p class="text-[#25D366]">Chat with us instantly</p>
+            </div></a> <a href="tel:+234" class="flex items-center gap-4 p-4 bg-[#FFF8F0] rounded-2xl hover:shadow-lg transition-all group">
+            <div class="w-14 h-14 bg-[#1A5D1A] rounded-full flex items-center justify-center text-white text-2xl group-hover:scale-110 transition-transform">
+             📞
+            </div>
+            <div>
+             <h3 class="font-bold text-[#2D2D2D]">Call Us</h3>
+             <p class="text-[#1A5D1A]" id="phone-display">+234 XXX XXX XXXX</p>
+            </div></a>
+          </div>
+          <h3 class="text-xl font-bold font-display text-[#2D2D2D] mt-12 mb-6">Follow Us</h3>
+          <div class="flex flex-wrap gap-4"><a href="https://www.facebook.com/profile.php?id=" target="_blank" rel="noopener noreferrer" class="social-btn flex items-center gap-2 bg-[#1877F2] text-white px-6 py-3 rounded-full font-medium">
+            <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24">
+             <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+            </svg> Facebook </a> <a href="https://www.instagram.com/ugobestfoods/" target="_blank" rel="noopener noreferrer" class="social-btn flex items-center gap-2 bg-gradient-to-r from-[#833AB4] via-[#FD1D1D] to-[#F77737] text-white px-6 py-3 rounded-full font-medium">
+            <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24">
+             <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+            </svg> Instagram </a> <a href="https://www.tiktok.com/@ugobestfoods" target="_blank" rel="noopener noreferrer" class="social-btn flex items-center gap-2 bg-black text-white px-6 py-3 rounded-full font-medium">
+            <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24">
+             <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-1-.05A6.33 6.33 0 005 20.1a6.34 6.34 0 0010.86-4.43v-7a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-1-.1z" />
+            </svg> TikTok </a>
+          </div>
+         </div><!-- Contact Form -->
+         <div>
+          <div class="bg-[#FFF8F0] rounded-3xl p-8 md:p-10">
+           <h2 class="text-2xl font-bold font-display text-[#2D2D2D] mb-6">Send Us a Message</h2>
+           <form id="contact-form" class="space-y-5">
+            <div><label class="block text-sm font-medium text-gray-700 mb-2">Your Name</label> <input type="text" required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-[#D4531C] focus:border-transparent outline-none transition-all bg-white" placeholder="Enter your name">
+            </div>
+            <div><label class="block text-sm font-medium text-gray-700 mb-2">Email Address</label> <input type="email" required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-[#D4531C] focus:border-transparent outline-none transition-all bg-white" placeholder="your@email.com">
+            </div>
+            <div><label class="block text-sm font-medium text-gray-700 mb-2">Subject</label> <input type="text" required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-[#D4531C] focus:border-transparent outline-none transition-all bg-white" placeholder="How can we help?">
+            </div>
+            <div><label class="block text-sm font-medium text-gray-700 mb-2">Message</label> <textarea rows="5" required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-[#D4531C] focus:border-transparent outline-none transition-all resize-none bg-white" placeholder="Your message..."></textarea>
+            </div><button type="submit" class="w-full bg-[#D4531C] text-white py-4 rounded-xl font-semibold text-lg hover:bg-[#b8461a] transition-colors shadow-lg"> Send Message </button>
+           </form>
+           <div id="contact-success" class="hidden text-center py-8">
+            <div class="text-6xl mb-4">
+             ✅
+            </div>
+            <h3 class="text-xl font-bold text-[#1A5D1A] mb-2">Message Sent!</h3>
+            <p class="text-gray-600">We'll respond as soon as possible.</p>
+           </div>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </section><!-- Footer -->
+    <footer class="bg-[#2D2D2D] text-white py-16">
+     <div class="max-w-7xl mx-auto px-4">
+      <div class="grid md:grid-cols-4 gap-12">
+       <div>
+        <div class="flex items-center gap-3 mb-6">
+         <div class="w-12 h-12 rounded-full bg-gradient-to-br from-[#1A5D1A] to-[#D4531C] flex items-center justify-center text-white font-bold">
+          UB
+         </div>
+         <div>
+          <h3 class="font-bold font-display text-lg">Ugo Best Foods</h3>
+          <p class="text-xs text-gray-400">Premium Nigerian Cuisine</p>
+         </div>
+        </div>
+        <p class="text-gray-400 text-sm">Delivering authentic Nigerian flavors with love and quality since day one.</p>
+       </div>
+       <div>
+        <h4 class="font-bold mb-4">Quick Links</h4>
+        <ul class="space-y-2 text-gray-400">
+         <li><button onclick="navigateTo('home')" class="hover:text-[#D4531C] transition-colors">Home</button></li>
+         <li><button onclick="navigateTo('about')" class="hover:text-[#D4531C] transition-colors">About Us</button></li>
+         <li><button onclick="navigateTo('menu')" class="hover:text-[#D4531C] transition-colors">Menu</button></li>
+         <li><button onclick="navigateTo('services')" class="hover:text-[#D4531C] transition-colors">Book Services</button></li>
+        </ul>
+       </div>
+       <div>
+        <h4 class="font-bold mb-4">Contact</h4>
+        <ul class="space-y-2 text-gray-400 text-sm">
+         <li>📧 ugobestfoods@gmail.com</li>
+         <li id="footer-phone">📞 +234 XXX XXX XXXX</li>
+        </ul>
+       </div>
+       <div>
+        <h4 class="font-bold mb-4">Follow Us</h4>
+        <div class="flex gap-3"><a href="https://www.facebook.com/profile.php?id=" target="_blank" rel="noopener noreferrer" class="w-10 h-10 bg-[#1877F2] rounded-full flex items-center justify-center hover:opacity-80 transition-opacity">
+          <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24">
+           <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+          </svg></a> <a href="https://www.instagram.com/ugobestfoods/" target="_blank" rel="noopener noreferrer" class="w-10 h-10 bg-gradient-to-r from-[#833AB4] via-[#FD1D1D] to-[#F77737] rounded-full flex items-center justify-center hover:opacity-80 transition-opacity">
+          <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24">
+           <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+          </svg></a> <a href="https://www.tiktok.com/@ugobestfoods" target="_blank" rel="noopener noreferrer" class="w-10 h-10 bg-black rounded-full flex items-center justify-center hover:opacity-80 transition-opacity border border-gray-600">
+          <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24">
+           <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-1-.05A6.33 6.33 0 005 20.1a6.34 6.34 0 0010.86-4.43v-7a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-1-.1z" />
+          </svg></a> <a href="https://wa.me/" target="_blank" rel="noopener noreferrer" class="w-10 h-10 bg-[#25D366] rounded-full flex items-center justify-center hover:opacity-80 transition-opacity">
+          <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24">
+           <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+          </svg></a>
+        </div>
+       </div>
+      </div>
+      <div class="border-t border-gray-700 mt-12 pt-8 text-center text-gray-400 text-sm">
+       <p>© 2024 Ugo Best Foods. All rights reserved. Made with ❤️ in Nigeria</p>
+      </div>
+     </div>
+    </footer>
+   </div>
+  </div><!-- Floating WhatsApp Button --> <a href="https://wa.me/" target="_blank" rel="noopener noreferrer" class="fixed bottom-6 right-6 w-16 h-16 bg-[#25D366] rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-transform z-50">
+   <svg class="w-8 h-8 text-white" fill="currentColor" viewbox="0 0 24 24">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+   </svg></a>
+  <script>
+    // Default configuration
+    const defaultConfig = {
+      logo_url: '',
+      hero_title: 'Premium Nigerian Food Delivered Fresh',
+      hero_subtitle: 'Experience the rich, authentic taste of Nigeria with locally-sourced ingredients and unbeatable quality. From savory Jollof Rice to crispy Puff Puff, we bring the best of Nigerian cuisine to your doorstep.',
+      company_mission: 'Ugo Best Foods delivers premium, locally-sourced Nigerian food products with unbeatable quality and taste. We are trusted for affordable Nigerian food and the best Nigerian food delivery across the country.',
+      phone_number: '+234 XXX XXX XXXX',
+      primary_color: '#D4531C',
+      secondary_color: '#1A5D1A',
+      accent_color: '#F4B400',
+      background_color: '#000000',
+      text_color: '#2D2D2D',
+      font_family: 'Poppins',
+      font_size: 16
+    };
+
+    // Navigation functions
+    function navigateTo(page) {
+      const pages = ['home', 'about', 'menu', 'services', 'contact'];
+      pages.forEach(p => {
+        const pageEl = document.getElementById(`${p}-page`);
+        if (pageEl) {
+          pageEl.classList.add('hidden');
+        }
+      });
+      const targetPage = document.getElementById(`${page}-page`);
+      if (targetPage) {
+        targetPage.classList.remove('hidden');
+      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      closeMobileMenu();
+    }
+
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobile-menu');
+      menu.classList.toggle('hidden');
+    }
+
+    function closeMobileMenu() {
+      const menu = document.getElementById('mobile-menu');
+      menu.classList.add('hidden');
+    }
+
+    // Form handlers
+    document.getElementById('booking-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      this.classList.add('hidden');
+      document.getElementById('form-success').classList.remove('hidden');
+    });
+
+    document.getElementById('contact-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      this.classList.add('hidden');
+      document.getElementById('contact-success').classList.remove('hidden');
+    });
+
+    // Element SDK initialization
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange: async (config) => {
+          const heroTitle = document.getElementById('hero-title');
+          const heroSubtitle = document.getElementById('hero-subtitle');
+          const missionText = document.getElementById('company-mission');
+          const phoneDisplay = document.getElementById('phone-display');
+          const footerPhone = document.getElementById('footer-phone');
+          const logoImg = document.getElementById('logo-img');
+          const logoText = document.getElementById('logo-text');
+
+          if (heroTitle) heroTitle.textContent = config.hero_title || defaultConfig.hero_title;
+          if (heroSubtitle) heroSubtitle.textContent = config.hero_subtitle || defaultConfig.hero_subtitle;
+          if (missionText) missionText.textContent = config.company_mission || defaultConfig.company_mission;
+          
+          const phone = config.phone_number || defaultConfig.phone_number;
+          if (phoneDisplay) phoneDisplay.textContent = phone;
+          if (footerPhone) footerPhone.textContent = '📞 ' + phone;
+
+          // Handle logo
+          const logoUrl = config.logo_url || defaultConfig.logo_url;
+          if (logoUrl) {
+            logoImg.src = logoUrl;
+            logoImg.style.display = 'block';
+            logoText.style.display = 'none';
+          } else {
+            logoImg.style.display = 'none';
+            logoText.style.display = 'block';
+          }
+
+          // Apply font
+          const customFont = config.font_family || defaultConfig.font_family;
+          document.body.style.fontFamily = `${customFont}, sans-serif`;
+        },
+        mapToCapabilities: (config) => ({
+          recolorables: [
+            {
+              get: () => config.background_color || defaultConfig.background_color,
+              set: (value) => { config.background_color = value; window.elementSdk.setConfig({ background_color: value }); }
+            },
+            {
+              get: () => config.primary_color || defaultConfig.primary_color,
+              set: (value) => { config.primary_color = value; window.elementSdk.setConfig({ primary_color: value }); }
+            },
+            {
+              get: () => config.secondary_color || defaultConfig.secondary_color,
+              set: (value) => { config.secondary_color = value; window.elementSdk.setConfig({ secondary_color: value }); }
+            },
+            {
+              get: () => config.accent_color || defaultConfig.accent_color,
+              set: (value) => { config.accent_color = value; window.elementSdk.setConfig({ accent_color: value }); }
+            },
+            {
+              get: () => config.text_color || defaultConfig.text_color,
+              set: (value) => { config.text_color = value; window.elementSdk.setConfig({ text_color: value }); }
+            }
+          ],
+          borderables: [],
+          fontEditable: {
+            get: () => config.font_family || defaultConfig.font_family,
+            set: (value) => { config.font_family = value; window.elementSdk.setConfig({ font_family: value }); }
+          },
+          fontSizeable: {
+            get: () => config.font_size || defaultConfig.font_size,
+            set: (value) => { config.font_size = value; window.elementSdk.setConfig({ font_size: value }); }
+          }
+        }),
+        mapToEditPanelValues: (config) => new Map([
+          ['logo_url', config.logo_url || defaultConfig.logo_url],
+          ['hero_title', config.hero_title || defaultConfig.hero_title],
+          ['hero_subtitle', config.hero_subtitle || defaultConfig.hero_subtitle],
+          ['company_mission', config.company_mission || defaultConfig.company_mission],
+          ['phone_number', config.phone_number || defaultConfig.phone_number]
+        ])
+      });
+    }
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9d392ed4d2eb1c4b',t:'MTc3MjA0MzI3My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
